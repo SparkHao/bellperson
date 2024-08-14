@@ -21,6 +21,8 @@ use group::{Curve, Group};
 use pairing::{Engine, MultiMillerLoop};
 use rand::RngCore;
 use structopt::StructOpt;
+use log::info;
+use ec_gpu_gen::rust_gpu_tools::{Device, UniqueId};
 
 macro_rules! timer {
     ($e:expr) => {{
@@ -200,6 +202,9 @@ fn main() {
     } else {
         None
     };
+
+    let device_all = Device::all();
+    info!("device_all: {:?}", device_all);
 
     if opts.prove {
         println!("Proving...");
