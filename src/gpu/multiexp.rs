@@ -86,6 +86,7 @@ where
             .iter()
             .map(|device| ec_gpu_gen::program!(device))
             .collect::<Result<_, _>>()?;
+        info!("create_with_abort after collect programs");
         let kernel = MultiexpKernel::create_with_abort(programs, devices, maybe_abort)?;
         Ok(Self(kernel))
     }

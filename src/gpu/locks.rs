@@ -227,7 +227,7 @@ where
 {
     let lock = GPULock::lock();
     let devices = lock.devices();
-
+    info!("devices: {:?}, priority: {}", devices, priority);
     let kernel = if priority {
         CpuGpuMultiexpKernel::create(&devices)
     } else {
