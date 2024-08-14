@@ -170,6 +170,7 @@ fn main() {
     pretty_env_logger::init_timed();
 
     let opts = Opts::from_args();
+    info!("opts: {:?}", opts);
     if opts.gpu {
         std::env::set_var("BELLMAN_VERIFIER", "gpu");
     } else {
