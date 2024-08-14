@@ -20,7 +20,7 @@ fn tmp_path(filename: &str, id: Option<UniqueId>) -> PathBuf {
         Some(id) => format!("{}.{}", filename, id),
         None => filename.to_string(),
     };
-    std::env::home_dir().join(temp_file)
+    std::env::home_dir().unwrap().join(temp_file)
 }
 
 /// Information about a lock.
