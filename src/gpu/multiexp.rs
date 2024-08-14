@@ -82,6 +82,13 @@ where
     ) -> EcResult<Self> {
         info!("Multiexp: CPU utilization: {}.", get_cpu_utilization());
         set_custom_gpu_env_var();
+
+        for device in devices.clone().iter(){
+            info!("device: {:?}", device);
+            let p = ec_gpu_gen::program!(device);
+            info!("{:?}", p.err());
+        };
+
         let programs = devices
             .iter()
             .map(|device| ec_gpu_gen::program!(device))
